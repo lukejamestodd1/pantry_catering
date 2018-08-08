@@ -5,7 +5,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var nodemailer = require('nodemailer');
 
-//============= CHINESE ROUTES ============ //
+//============= MAIN ROUTES ============ //
 
 router.get('/', function (req, res) {
 
@@ -16,7 +16,7 @@ router.get('/', function (req, res) {
                 update2: updates[1],
                 article1: articles[articles.length - 1],
                 article2: articles[articles.length - 2],
-                title: "新世纪中文学校", subtitle: ""
+                title: "The Pantry", subtitle: "Catering and Kitchen"
             });
         });
     });
@@ -26,25 +26,9 @@ router.get('/enrol', function(req, res) {
     res.render('enrol_language', { title: "中文学校报名"});
 });
 
-// router.get('/enrol/language', function(req, res) {
-//     res.render('enrol_language', { title: "中文学校报名"});
-// });
-
-// router.get('/enrol/learning', function(req, res) {
-//     res.render('enrol_learning', { title: "教育中心报名"});
-// });
-
 router.get('/campuses', function(req, res) {
     res.render('campuses_language', { title: "中文学校分校"});
 });
-
-// router.get('/campuses/language', function(req, res) {
-//     res.render('campuses_language', { title: "中文学校分校"});
-// });
-
-// router.get('/campuses/learning', function(req, res) {
-//     res.render('campuses_learning', { title: "教育中心分校"});
-// });
 
 router.get('/news', function(req, res) {
     mongoose.model('Article').find({blog_or_news : '0,1', language : '0'}).sort({'_id': 1}).exec(function (err, articles){
@@ -68,7 +52,7 @@ router.get('/blog', function(req, res) {
 });
 
 router.get('/contact', function(req, res) {
-    res.render('contact', { title: "联系方法", msg: "Send a message"});
+    res.render('contact', { title: "Contact Us", msg: "Send a message"});
 });
 
 // Email functionality
@@ -233,7 +217,7 @@ router.post('/english/contact', function(req, res) {
 //     });
 // });
 
-router.get('/albert', function(req, res) {
+router.get('/sally', function(req, res) {
     res.render('login', { user : req.user });
 });
 
